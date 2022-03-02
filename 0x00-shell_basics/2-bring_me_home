@@ -1,2 +1,4 @@
 #!/bin/bash
 
+if[echo $PWD]
+	echo $HOME
