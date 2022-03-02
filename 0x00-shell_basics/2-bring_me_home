@@ -1,3 +1,2 @@
 #!/bin/bash
-if[/tmp$ pwd]
-	echo $HOME
+echo $HOME
