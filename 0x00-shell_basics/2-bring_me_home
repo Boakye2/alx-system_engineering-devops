@@ -1,4 +1,3 @@
 #!/bin/bash
-²
-if[echo $PWD]
+if[/tmp$ pwd]
 	echo $HOME

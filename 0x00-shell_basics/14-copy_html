@@ -1,2 +1,2 @@
 #!/bin/bash
-cp /PWD/*.html /HOME/
+cp /tmp/*.html ..
