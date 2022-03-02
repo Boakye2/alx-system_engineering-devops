@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -la /PWD parent_dir("PWD) /boot 
+ls -la /PWD parent_dir("PWD") /boot 
