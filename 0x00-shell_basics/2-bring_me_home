@@ -1,2 +1,2 @@
 #!/bin/bash
-pwd=get("home")
+mv HOME pwd
