@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2154
-#configures a new Ubuntu machine nginx
-sudo apt-get update
+# Task 0. Double the number of webservers
+sudo apt-get update -y
 sudo apt-get install nginx -y
-sudo ufw allow 'Nginx HTTP'
-echo "Holberton School" | sudo tee /var/www/html/index.nginx-debian.html
-new_string="listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/www.youtube.com\/;\\n\\t}"
-sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-enabled/default
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
-new_string="listen 80 default_server;\\nerror_page 404 \/404.html;\\n\\tlocation = \/404.html {\\n\\t\\troot \/usr\/share\/nginx\/html;\\n\\t\\tinternal;\\n\\t}"
-sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-enabled/default
-new_string2="http {\\n\\tadd_header X-Served-By \"$HOSTNAME\";"
-sudo sed -i "s/http {/$new_string2/" /etc/nginx/nginx.conf
-sudo service nginx start
+echo "Holberton School" | sudo tee /var/www/html/index.html
+sudo sed -i "30i \\\trewrite ^/redirect_me https://tecnoayuda.co permanent;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/my404page.html
+sudo sed -i "30i \\\terror_page 404 /my404page.html;\n\tlocation = /my404page.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default
+sudo sed -i "53i \\\t\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+sudo service nginx restart
